@@ -172,7 +172,7 @@ func FormatSQLWithArgs(sql string, args []any) string {
 	return result
 }
 
-func NewPgsLogger(level zerolog.Level) zerolog.Logger {
+func NewPgxLogger(level zerolog.Level) zerolog.Logger {
 	writer := zerolog.ConsoleWriter{
 		Out:        os.Stdout,
 		TimeFormat: "2006-01-02 15:04:05",
