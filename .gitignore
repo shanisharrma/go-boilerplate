@@ -45,5 +45,4 @@ yarn-error.log*
 tsconfig.tsbuildinfo
 .turbo
 .vscode
-
-go-boilerplate
+.idea 
