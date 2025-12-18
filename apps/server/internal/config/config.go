@@ -9,6 +9,7 @@ type Config struct {
 	Server        ServerConfig         `koanf:"server" validate:"required"`
 	Database      DatabaseConfig       `koanf:"database" validate:"required"`
 	Redis         RedisConfig          `koanf:"redis" validate:"required"`
+	Integration   IntegrationConfig    `koanf:"integration" validate:"required"`
 	Auth          AuthCofing           `koanf:"auth" validate:"required"`
 	Observability *ObservabilityConfig `konaf:"observability" `
 }
@@ -40,6 +41,10 @@ type DatabaseConfig struct {
 
 type RedisConfig struct {
 	Address string `koanf:"address" validate:"required"`
+}
+
+type IntegrationConfig struct {
+	ResendAPIKey string `konaf:"resend_api_key" validate:"required"`
 }
 
 type AuthCofing struct {
