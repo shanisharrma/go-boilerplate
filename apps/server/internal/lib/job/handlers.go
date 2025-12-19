@@ -13,14 +13,14 @@ import (
 
 var emailClient *email.Client
 
-func (j *JobService) Inithandlers(config *config.Config, logger *zerolog.Logger) {
+func (j *JobService) InitHandlers(config *config.Config, logger *zerolog.Logger) {
 	emailClient = email.NewClient(config, logger)
 }
 
 func (j *JobService) handleWelcomeEmailTask(ctx context.Context, t *asynq.Task) error {
 	var p WelcomeEmailPayload
 	if err := json.Unmarshal(t.Payload(), &p); err != nil {
-		return fmt.Errorf("failed to unmarshal wlecome email payload: %w", err)
+		return fmt.Errorf("failed to unmarshal welcome email payload: %w", err)
 	}
 
 	j.logger.Info().

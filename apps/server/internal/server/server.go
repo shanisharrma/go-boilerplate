@@ -47,13 +47,13 @@ func New(cfg *config.Config, logger *zerolog.Logger, loggerService *loggerPkg.Lo
 	defer cancel()
 
 	if err := redisClient.Ping(ctx).Err(); err != nil {
-		logger.Error().Err(err).Msg("Failed to connect to Redis, continuiing without Redis")
-		// don't fail startup if Redis is unavailabale
+		logger.Error().Err(err).Msg("Failed to connect to Redis, continuing without Redis")
+		// don't fail startup if Redis is unavailable
 	}
 
 	// JobService
 	jobService := job.NewJobService(logger, cfg)
-	jobService.Inithandlers(cfg, logger)
+	jobService.InitHandlers(cfg, logger)
 
 	// Start job server
 	if err := jobService.Start(); err != nil {
