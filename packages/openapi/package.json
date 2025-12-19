@@ -1,0 +1,37 @@
+{
+  "name": "@boilerplate/openapi",
+  "version": "1.0.0",
+  "description": "Generates OpenAPI doc",
+  "type": "module",
+  "scripts": {
+    "gen": "tsx src/gen.ts",
+    "build": "tsc && tsc-alias",
+    "dev": "wait-on ../zod/dist/index.js && tsc && (concurrently \"tsc -w\" \"tsc-alias -w\")",
+    "clean": "rimraf dist tsconfig.tsbuildinfo .turbo node_modules"
+  },
+  "exports": {
+    "./contracts": {
+      "types": "./dist/contracts/index.d.ts",
+      "default": "./dist/contract/index.js"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anatine/zod-openapi": "^2.2.8",
+    "@boilerplate/zod": "workspace:*",
+    "@ts-rest/core": "^3.52.1",
+    "@ts-rest/open-api": "^3.52.1",
+    "ts-pattern": "^5.9.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.3",
+    "concurrently": "^9.2.1",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "wait-on": "^8.0.5"
+  }
+}
