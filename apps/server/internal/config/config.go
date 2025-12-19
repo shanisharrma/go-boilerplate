@@ -1,7 +1,14 @@
 package config
 
 import (
+	"os"
+	"strings"
+
+	"github.com/go-playground/validator/v10"
 	_ "github.com/joho/godotenv/autoload"
+	"github.com/knadh/koanf/providers/env"
+	"github.com/knadh/koanf/v2"
+	"github.com/rs/zerolog"
 )
 
 type Config struct {
@@ -10,7 +17,7 @@ type Config struct {
 	Database      DatabaseConfig       `koanf:"database" validate:"required"`
 	Redis         RedisConfig          `koanf:"redis" validate:"required"`
 	Integration   IntegrationConfig    `koanf:"integration" validate:"required"`
-	Auth          AuthCofing           `koanf:"auth" validate:"required"`
+	Auth          AuthConfig           `koanf:"auth" validate:"required"`
 	Observability *ObservabilityConfig `konaf:"observability" `
 }
 
@@ -47,49 +54,49 @@ type IntegrationConfig struct {
 	ResendAPIKey string `konaf:"resend_api_key" validate:"required"`
 }
 
-type AuthCofing struct {
+type AuthConfig struct {
 	SecretKey string `koanf:"secret_key" validate:"required"`
 }
 
-// func LoadConfig() (*Config, error) {
-// 	logger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr}).With().Timestamp().Logger()
+func LoadConfig() (*Config, error) {
+	logger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr}).With().Timestamp().Logger()
 
-// 	k := koanf.New(".")
+	k := koanf.New(".")
 
-// 	err := k.Load(env.Provider("BOILERPLATE_", ".", func(s string) string {
-// 		return strings.ToLower(strings.TrimPrefix(s, "BOILERPLATE_"))
-// 	}), nil)
-// 	if err != nil {
-// 		logger.Fatal().Err(err).Msg("could not load initial env variables")
-// 	}
+	err := k.Load(env.Provider("BOILERPLATE_", ".", func(s string) string {
+		return strings.ToLower(strings.TrimPrefix(s, "BOILERPLATE_"))
+	}), nil)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("could not load initial env variables")
+	}
 
-// 	mainConfig := &Config{}
+	mainConfig := &Config{}
 
-// 	err = k.Unmarshal("", mainConfig)
-// 	if err != nil {
-// 		logger.Fatal().Err(err).Msg("could not unmarshal main config!")
-// 	}
+	err = k.Unmarshal("", mainConfig)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("could not unmarshal main config!")
+	}
 
-// 	validate := validator.New()
+	validate := validator.New()
 
-// 	err = validate.Struct(mainConfig)
-// 	if err != nil {
-// 		logger.Fatal().Err(err).Msg("config validate failed")
-// 	}
+	err = validate.Struct(mainConfig)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("config validate failed")
+	}
 
-// 	// Set default observability config if not provided
-// 	if mainConfig.Observability == nil {
-// 		mainConfig.Observability = DefaultObservabilityConfig()
-// 	}
+	// Set default observability config if not provided
+	if mainConfig.Observability == nil {
+		mainConfig.Observability = DefaultObservabilityConfig()
+	}
 
-// 	// Override service name and enviroment from primary config
-// 	mainConfig.Observability.ServiceName = "boilerplate"
-// 	mainConfig.Observability.Environment = mainConfig.Primary.Env
+	// Override service name and enviroment from primary config
+	mainConfig.Observability.ServiceName = "boilerplate"
+	mainConfig.Observability.Environment = mainConfig.Primary.Env
 
-// 	// Validate observability config
-// 	if err := mainConfig.Observability.Validate(); err != nil {
-// 		logger.Fatal().Err(err).Msg("invalid observability config")
-// 	}
+	// Validate observability config
+	if err := mainConfig.Observability.Validate(); err != nil {
+		logger.Fatal().Err(err).Msg("invalid observability config")
+	}
 
-// 	return mainConfig, nil
-// }
+	return mainConfig, nil
+}

@@ -10,7 +10,7 @@ type ObservabilityConfig struct {
 	Environment  string             `koanf:"environment" validate:"required"`
 	Logging      LoggingConfig      `kaonf:"logging" validate:"required"`
 	NewRelic     NewRelicConfig     `koanf:"new_relic" validate:"required"`
-	HealthChecks HelathChecksConfig `koanf:"health_checks" validate:"required"`
+	HealthChecks HealthChecksConfig `koanf:"health_checks" validate:"required"`
 }
 
 type LoggingConfig struct {
@@ -21,12 +21,12 @@ type LoggingConfig struct {
 
 type NewRelicConfig struct {
 	LicenseKey                string `koanf:"license_key" validate:"required"`
-	AppLogForwardEnabled      bool   `koanf:"app_log_forwarding_enabled"`
+	AppLogForwardingEnabled   bool   `koanf:"app_log_forwarding_enabled"`
 	DistributedTracingEnabled bool   `konaf:"distributed_tracing_enabled"`
 	DebugLogging              bool   `koanf:"debug_logging"`
 }
 
-type HelathChecksConfig struct {
+type HealthChecksConfig struct {
 	Enabled  bool          `koanf:"enabled"`
 	Interval time.Duration `koanf:"interval" validate:"min=1s"`
 	Timeout  time.Duration `koanf:"timeout" validate:"min=1s"`
@@ -44,11 +44,11 @@ func DefaultObservabilityConfig() *ObservabilityConfig {
 		},
 		NewRelic: NewRelicConfig{
 			LicenseKey:                "",
-			AppLogForwardEnabled:      true,
+			AppLogForwardingEnabled:   true,
 			DistributedTracingEnabled: true,
 			DebugLogging:              false, // Disbaled by default to avaid mixed log formats
 		},
-		HealthChecks: HelathChecksConfig{
+		HealthChecks: HealthChecksConfig{
 			Enabled:  true,
 			Interval: 30 * time.Second,
 			Timeout:  5 * time.Second,

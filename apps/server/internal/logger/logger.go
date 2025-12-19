@@ -33,7 +33,7 @@ func NewLoggerService(cfg *config.ObservabilityConfig) *LoggerService {
 	configOptions = append(configOptions,
 		newrelic.ConfigAppName(cfg.ServiceName),
 		newrelic.ConfigLicense(cfg.NewRelic.LicenseKey),
-		newrelic.ConfigAppLogForwardingEnabled(cfg.NewRelic.AppLogForwardEnabled),
+		newrelic.ConfigAppLogForwardingEnabled(cfg.NewRelic.AppLogForwardingEnabled),
 		newrelic.ConfigDistributedTracerEnabled(cfg.NewRelic.DistributedTracingEnabled),
 	)
 
