@@ -1,0 +1,25 @@
+<type>(<scope>): <subject>
+
+# ───────── Commit Message Guide ─────────
+#
+# type   : feat | fix | docs | style | refactor | perf | test | build | ci | chore | revert
+#
+# scope (choose ONE):
+# root       → Root of the project (./)
+# api        → Go REST API (apps/api)
+# worker     → background jobs (apps/worker)
+# web        → frontend app (apps/web)
+# ui         → shared UI components (packages/ui)
+# config     → shared configuration (packages/config)
+# zod        → schema definitions (packages/zod)
+# openapi   → API contracts (packages/openapi)
+# infra     → CI / Docker / deployment (infra)
+#
+# subject: sentence-case, imperative, no period
+#
+# Examples:
+# feat(api): add todo stats endpoint
+# fix(worker): handle retry backoff
+# ci(infra): add postgres service
+#
+# Lines starting with # are ignored.
