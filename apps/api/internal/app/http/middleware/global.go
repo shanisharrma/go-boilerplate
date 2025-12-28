@@ -7,8 +7,8 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
 	"github.com/shanisharrma/go-boilerplate/internal/infrastructure/sqlerr"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 	"github.com/shanisharrma/go-boilerplate/internal/shared/errs"
 )
 

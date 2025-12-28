@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/rs/zerolog"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 	"github.com/stretchr/testify/require"
 )
 

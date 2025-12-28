@@ -1,6 +1,6 @@
 package middleware
 
-import "github.com/shanisharrma/go-boilerplate/internal/app/server"
+import "github.com/shanisharrma/go-boilerplate/internal/server"
 
 type RateLimitMiddleware struct {
 	server *server.Server

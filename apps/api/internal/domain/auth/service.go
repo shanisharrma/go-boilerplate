@@ -2,7 +2,7 @@ package auth
 
 import (
 	"github.com/clerk/clerk-sdk-go/v2"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 )
 
 type AuthService struct {

@@ -2,21 +2,20 @@ package service
 
 import (
 	"github.com/shanisharrma/go-boilerplate/internal/app/core/repository"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
-	"github.com/shanisharrma/go-boilerplate/internal/app/worker/job"
 	"github.com/shanisharrma/go-boilerplate/internal/domain/auth"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 )
 
 type Services struct {
 	Auth *auth.AuthService
-	Job  *job.JobService
+	Job  server.JobRunner
 }
 
 func NewServices(s *server.Server, repos *repository.Repositories) (*Services, error) {
 	authService := auth.NewAuthService(s)
 
 	return &Services{
-		Job:  s.Job,
+		Job:  s.Jobs,
 		Auth: authService,
 	}, nil
 }

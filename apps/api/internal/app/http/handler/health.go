@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/shanisharrma/go-boilerplate/internal/app/http/middleware"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 
 	"github.com/labstack/echo/v4"
 )

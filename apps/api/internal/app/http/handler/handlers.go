@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/shanisharrma/go-boilerplate/internal/app/core/service"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 )
 
 type Handlers struct {

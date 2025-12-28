@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
 	"github.com/shanisharrma/go-boilerplate/internal/infrastructure/database"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 	"github.com/shanisharrma/go-boilerplate/internal/shared/config"
 )
 

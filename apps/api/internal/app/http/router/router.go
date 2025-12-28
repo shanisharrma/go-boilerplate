@@ -8,7 +8,7 @@ import (
 	"github.com/shanisharrma/go-boilerplate/internal/app/core/service"
 	"github.com/shanisharrma/go-boilerplate/internal/app/http/handler"
 	"github.com/shanisharrma/go-boilerplate/internal/app/http/middleware"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 	"golang.org/x/time/rate"
 )
 

@@ -8,7 +8,7 @@ import (
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/shanisharrma/go-boilerplate/internal/app/http/middleware"
 	"github.com/shanisharrma/go-boilerplate/internal/app/http/validation"
-	"github.com/shanisharrma/go-boilerplate/internal/app/server"
+	"github.com/shanisharrma/go-boilerplate/internal/server"
 )
 
 // Handler provides base functionality for all handlers
